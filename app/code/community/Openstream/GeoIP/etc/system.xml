@@ -1,0 +1,30 @@
+<config>
+    <sections>
+        <general>
+            <groups>
+                <country>
+                    <fields>
+                        <geoip_status translate="label">
+                            <label>GeoIP Database Downloaded</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>geoip/system_config_status</frontend_model>
+                            <sort_order>7000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </geoip_status>
+                        <geoip_synchronize translate="label comment">
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>geoip/system_config_synchronize</frontend_model>
+                            <sort_order>7010</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>If you synchronize GeoIP database too often you may be banned for several hours.</comment>
+                        </geoip_synchronize>
+                    </fields>
+                </country>
+            </groups>
+        </general>
+    </sections>
+</config>

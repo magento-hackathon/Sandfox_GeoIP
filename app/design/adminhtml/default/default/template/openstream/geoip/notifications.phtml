@@ -1,0 +1,3 @@
+<?php if ($errorMessage = $this->checkFilePermissions()) : ?>
+    <div class="notification-global"><strong>GeoIP:</strong> <?php echo $errorMessage ?></div>
+<?php endif; ?>
