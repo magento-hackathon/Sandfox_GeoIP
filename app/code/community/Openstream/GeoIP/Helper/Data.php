@@ -2,18 +2,6 @@
 
 class Openstream_GeoIP_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    /*
-    public function goToHell()
-    {
-        $this->getResponse()->setHeader('HTTP/1.1','404 Not Found');
-        $this->getResponse()->setHeader('Status','404 File not found');
-        $pageId = Mage::getStoreConfig('web/default/cms_no_route');
-        if (!Mage::helper('cms/page')->renderPage($this, $pageId)) {
-            $this->_forward('defaultNoRoute');
-        }
-    }
-    */
-
     /**
      * Get size of remote file
      *
@@ -24,7 +12,6 @@ class Openstream_GeoIP_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $file);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_NOBODY, true);

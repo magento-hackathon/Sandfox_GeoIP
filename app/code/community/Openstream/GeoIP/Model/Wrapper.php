@@ -241,7 +241,7 @@ class Openstream_GeoIP_Model_Wrapper
         if ($this->flags & $this->GEOIP_SHARED_MEMORY) {
             $this->shmid = @shmop_open ($this->GEOIP_SHM_KEY, "a", 0, 0);
         } else {
-            if ($this->filehandle = fopen($filename,"rb")) {
+            if (file_exists($filename) && $this->filehandle = fopen($filename,"rb")) {
                 if ($this->flags & $this->GEOIP_MEMORY_CACHE) {
                     $s_array = fstat($this->filehandle);
                     $this->memory_buffer = fread($this->filehandle, $s_array['size']);
