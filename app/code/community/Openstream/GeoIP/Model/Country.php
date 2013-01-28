@@ -9,14 +9,22 @@ class Openstream_GeoIP_Model_Country extends Openstream_GeoIP_Model_Abstract
     {
         parent::__construct();
 
+        $this->country = $this->getCountryByIp($_SERVER['REMOTE_ADDR']);
+        $allowCountries = explode(',', (string)Mage::getStoreConfig('general/country/allow'));
+        $this->addAllowedCountry($allowCountries);
+    }
+
+    public function getCountryByIp($ip)
+    {
         /** @var $wrapper Openstream_GeoIP_Model_Wrapper */
-        $wrapper = Mage::getModel('geoip/wrapper');
+        $wrapper = Mage::getSingleton('geoip/wrapper');
         if ($wrapper->geoip_open($this->local_file, 0)) {
-            $this->country = $wrapper->geoip_country_code_by_addr($_SERVER['REMOTE_ADDR']);
+            $country = $wrapper->geoip_country_code_by_addr($ip);
             $wrapper->geoip_close();
 
-            $allowCountries = explode(',', (string)Mage::getStoreConfig('general/country/allow'));
-            $this->addAllowedCountry($allowCountries);
+            return $country;
+        } else {
+            return null;
         }
     }
 

@@ -23,13 +23,15 @@ This extension only adds MaxMind GeoIP Lite database to your Magento installatio
     /**
      * Returns you the ISO 3166-1 code of visitors country.
      */
-    $geoIP->getCountry();
+    echo $geoIP->getCountry();
 
     /**
      * Returns true or false depending if current visitors country is among allowed countries.
      * If there are no allowed countries in the system returns true.
      */
-    $geoIP->isCountryAllowed();
+    if ($geoIP->isCountryAllowed()) {
+        // ...
+    }
 
     /**
      * Adds country (or array of countries) to list of allowed countries.
@@ -40,7 +42,12 @@ This extension only adds MaxMind GeoIP Lite database to your Magento installatio
         'CA'
     ));
 
-Please note that `geoip/country` is initialized at each Magento load so in order to save system resources please always use it as a singleton.
+    /**
+     * Or just get a country code of a specific IP
+     */
+    echo $geoIP->getCountryByIp('94.230.212.77');
+
+Please note that `geoip/country` is initialized at each Magento load. In order to save system resources please always use it as a singleton.
 
 The list of allowed countries is initially populated from *System\Configuration\General\General\Countries Options\Alowed Countries* multi-select field of your Magento configuration. The `addAllowedCountry` method is not adding country to system configuration but adds it to internal list extension uses for `isCountryAllowed` method.
 
