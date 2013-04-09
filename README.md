@@ -51,6 +51,11 @@ Please note that `geoip/country` is initialized at each Magento load. In order t
 
 The list of allowed countries is initially populated from *System\Configuration\General\General\Countries Options\Alowed Countries* multi-select field of your Magento configuration. The `addAllowedCountry` method is not adding country to system configuration but adds it to internal list extension uses for `isCountryAllowed` method.
 
+Global Restrict
+===============
+
+To globally restrict access to your site by IP consider extending the controller_front_init_before event in your own module and add dependancy to geoip
+
 Credits
 =======
 
