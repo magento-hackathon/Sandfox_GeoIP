@@ -11,7 +11,7 @@ class Openstream_GeoIP_ProcessController extends Mage_Core_Controller_Front_Acti
 
         $_realSize = filesize($info->getArchivePath());
         $_totalSize = $_session->getData('_geoip_file_size');
-        echo $_realSize / $_totalSize * 100;
+        echo $_totalSize ? $_realSize / $_totalSize * 100 : 0;
     }
 
     public function synchronizeAction()
