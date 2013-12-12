@@ -62,8 +62,8 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
     public function getButtonHtml()
     {
         /** @var $button Mage_Adminhtml_Block_Widget_Button */
-        $button = $this->getLayout()->createBlock('adminhtml/widget_button')
-            ->setData(array(
+        $button = $this->getLayout()->createBlock('adminhtml/widget_button');
+        $button->setData(array(
                 'id'        => 'synchronize_button',
                 'label'     => $this->helper('adminhtml')->__('Synchronize'),
                 'onclick'   => 'javascript:synchronize(); return false;'
