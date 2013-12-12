@@ -41,7 +41,7 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
      */
     public function getAjaxSyncUrl()
     {
-        return $this->getUrl('geoip/process/synchronize');
+        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/synchronize');
     }
 
     /**
@@ -51,7 +51,7 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
      */
     public function getAjaxStatusUpdateUrl()
     {
-        return $this->getUrl('geoip/process/status');
+        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/status');
     }
 
     /**

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Openstream_GeoIP>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Openstream_GeoIP>
     </modules>
     <global>
@@ -33,17 +33,17 @@
             </controller_front_init_before>
         </events>
     </global>
-    <frontend>
+    <admin>
         <routers>
-            <geoip>
-                <use>standard</use>
+            <adminhtml>
                 <args>
-                    <module>Openstream_GeoIP</module>
-                    <frontName>geoip</frontName>
+                    <modules>
+                        <openstream_geoip before="Mage_Adminhtml">Openstream_GeoIP_Adminhtml</openstream_geoip>
+                    </modules>
                 </args>
-            </geoip>
+            </adminhtml>
         </routers>
-    </frontend>
+    </admin>
     <adminhtml>
         <layout>
             <updates>

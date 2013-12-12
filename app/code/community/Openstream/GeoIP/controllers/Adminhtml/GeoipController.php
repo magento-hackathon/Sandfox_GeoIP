@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_ProcessController extends Mage_Core_Controller_Front_Action
+class Openstream_GeoIP_Adminhtml_GeoipController extends Mage_Adminhtml_Controller_Action
 {
     public function statusAction()
     {
