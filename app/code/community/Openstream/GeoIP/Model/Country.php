@@ -9,7 +9,7 @@ class Openstream_GeoIP_Model_Country extends Openstream_GeoIP_Model_Abstract
     {
         parent::__construct();
 
-        $this->country = $this->getCountryByIp($_SERVER['REMOTE_ADDR']);
+        $this->country = $this->getCountryByIp(Mage::helper('core/http')->getRemoteAddr());
         $allowCountries = explode(',', (string)Mage::getStoreConfig('general/country/allow'));
         $this->addAllowedCountry($allowCountries);
     }
