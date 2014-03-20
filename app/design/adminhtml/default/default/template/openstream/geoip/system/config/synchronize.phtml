@@ -2,11 +2,25 @@
 /**
  * @var Openstream_GeoIP_Block_System_Config_Synchronize $this
  */
+
+/**
+ * Returns you the ISO 3166-1 code of visitors country.
+ */
 ?>
 
 <script type="text/javascript">
 //<![CDATA[
-    var u;
+    var u = {};
+    var geoipUrl = {
+        'country': {
+            status: '<?php echo $this->getAjaxStatusUpdateUrl("country") ?>',
+            sync: '<?php echo $this->getAjaxSyncUrl("country") ?>'
+        },
+        'city': {
+            status: '<?php echo $this->getAjaxStatusUpdateUrl("city") ?>',
+            sync: '<?php echo $this->getAjaxSyncUrl("city") ?>'
+        }
+    }
 
     function enableSyncButton() {
         Form.Element.enable('synchronize_button');
@@ -18,52 +32,73 @@
         $('synchronize_button').addClassName('disabled');
     }
 
-    function checkStatus() {
-        u = new Ajax.PeriodicalUpdater('', '<?php echo $this->getAjaxStatusUpdateUrl() ?>', {
+    function checkStatus(index) {
+        u[index] = new Ajax.PeriodicalUpdater('', geoipUrl[index].status,
+        {
             method:     'get',
             frequency:  1,
             loaderArea: false,
 
-            onSuccess: function(transport) {
-                try {
-                    var percent = parseInt(transport.responseText);
-                    if (percent == 100) {
-                        u.stop();
-                        $('sync_span').addClassName('no-display');
-                        enableSyncButton();
-                    } else {
-                        $('sync_message_span').update(percent + '%');
-                    }
-                } catch (e) { }
-            }
+            onSuccess: (function(prefix)
+            {
+                return function(transport) {
+                    try {
+                        var percent = parseInt(transport.responseText);
+                        if (percent == 100) {
+                            u[prefix].stop();
+                            $(prefix + '_sync_span').addClassName('no-display');
+                            enableSyncButton();
+                        } else {
+                            $(prefix + '_sync_message_span').update(percent + '%');
+                        }
+                    } catch (e) { }
+                }
+            })(index)
         });
     }
 
-    function synchronize() {
+    function synchronize()
+    {
         disableSyncButton();
-        $('sync_span_error').addClassName('no-display');
-        $('sync_span').removeClassName('no-display');
-        $('sync_message_span').update('0%');
-        new Ajax.Request('<?php echo $this->getAjaxSyncUrl() ?>', {
-            loaderArea:     false,
-            asynchronous:   true,
+        for (var index in geoipUrl)
+        {
+            if (!geoipUrl.hasOwnProperty(index)) continue;
+            var url = geoipUrl[index];
 
-            onSuccess: function(transport) {
-                enableSyncButton();
-                var response = eval('(' + transport.responseText + ')');
-                if (response.status == 'success') {
-                    $('sync_update_date').update(response.date);
-                } else {
-                    $('sync_span').addClassName('no-display');
-                    $('sync_span_error').removeClassName('no-display').update(response.message);
-                }
-                u.stop();
-            }
-        });
-        window.setTimeout('checkStatus()', 1000);
+            $(index + '_sync_span_error').addClassName('no-display');
+            $(index + '_sync_span').removeClassName('no-display');
+            $(index + '_sync_message_span').update('0%');
+            new Ajax.Request(url.sync, {
+                loaderArea:     false,
+                asynchronous:   true,
+
+                onSuccess: (function(prefix)
+                {
+                    return function(transport) {
+                        enableSyncButton();
+                        var response = eval('(' + transport.responseText + ')');
+                        if (response.status == 'success') {
+                            $(prefix + '_sync_update_date').update(response.date);
+                        } else {
+                            $(prefix + '_sync_span').addClassName('no-display');
+                            $(prefix + '_sync_span_error').removeClassName('no-display').update(response.message);
+                        }
+                        u[prefix].stop();
+                    }
+                })(index)
+            });
+            (function(a)
+            {
+                window.setTimeout(function()
+                {
+                    checkStatus(a)
+                }, 1000);
+            })(index);
+
+            // window.setTimeout(function (a) { checkStatus(index); }, 1000);
+        };
     }
 //]]>
 </script>
 
-<?php echo $this->getButtonHtml() ?><span class="sync-indicator no-display" id="sync_span"><img alt="Synchronize" style="margin:0 5px" src="<?php echo $this->getSkinUrl('images/process_spinner.gif') ?>"/><span id="sync_message_span"></span></span>
-&nbsp; <span class="no-display error" id="sync_span_error"></span>
+<?php echo $this->getButtonHtml() ?>

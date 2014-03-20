@@ -18,7 +18,7 @@ class Openstream_GeoIP_Model_Country extends Openstream_GeoIP_Model_Abstract
     {
         /** @var $wrapper Openstream_GeoIP_Model_Wrapper */
         $wrapper = Mage::getSingleton('geoip/wrapper');
-        if ($wrapper->geoip_open($this->local_file, 0)) {
+        if ($wrapper->geoip_open($this->files['country']['local_file'], 0)) {
             $country = $wrapper->geoip_country_code_by_addr($ip);
             $wrapper->geoip_close();
 
