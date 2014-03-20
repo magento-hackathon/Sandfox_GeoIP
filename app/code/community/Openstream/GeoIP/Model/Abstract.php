@@ -24,6 +24,11 @@ class Openstream_GeoIP_Model_Abstract
         return $this->files[$index]['local_archive'];
     }
 
+    public function getFilePath($index = 'country')
+    {
+        return $this->files[$index]['local_file'];
+    }
+
     public function checkFilePermissions($index = 'country')
     {
         /** @var $helper Openstream_GeoIP_Helper_Data */
