@@ -5,7 +5,7 @@
                 <country>
                     <fields>
                         <geoip_status translate="label">
-                            <label>GeoIP Database Downloaded</label>
+                            <label>GeoIP Country Database Downloaded</label>
                             <frontend_type>label</frontend_type>
                             <frontend_model>geoip/system_config_status</frontend_model>
                             <sort_order>7000</sort_order>
@@ -13,10 +13,35 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </geoip_status>
+                        <geoip_sync_status translate="label">
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>geoip/system_config_sync_status</frontend_model>
+                            <sort_order>7010</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </geoip_sync_status>
+                        <geoip_status_city translate="label">
+                            <label>GeoIP City Database Downloaded</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>geoip/system_config_city_status</frontend_model>
+                            <sort_order>7020</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </geoip_status_city>
+                        <geoip_sync_city_status translate="label">
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>geoip/system_config_sync_city_status</frontend_model>
+                            <sort_order>7030</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </geoip_sync_city_status>
                         <geoip_synchronize translate="label comment">
                             <frontend_type>button</frontend_type>
                             <frontend_model>geoip/system_config_synchronize</frontend_model>
-                            <sort_order>7010</sort_order>
+                            <sort_order>7040</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>

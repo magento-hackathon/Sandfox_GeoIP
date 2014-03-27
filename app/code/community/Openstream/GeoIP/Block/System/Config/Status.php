@@ -2,6 +2,7 @@
 
 class Openstream_GeoIP_Block_System_Config_Status extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
+    public $prefix = 'country';
     /**
      * Remove scope label
      *
@@ -18,12 +19,12 @@ class Openstream_GeoIP_Block_System_Config_Status extends Mage_Adminhtml_Block_S
     {
         /** @var $info Openstream_GeoIP_Model_Info */
         $info = Mage::getModel('geoip/info');
-        if ($date = $info->getDatFileDownloadDate()) {
+        if ($date = $info->getDatFileDownloadDate($this->prefix)) {
             $format = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);
             $date = Mage::app()->getLocale()->date(intval($date))->toString($format);
         } else {
             $date = '-';
         }
-        return '<div id="sync_update_date">' . $date . '</div>';
+        return '<div id="' . $this->prefix . '_sync_update_date">' . $date . '</div>';
     }
 }

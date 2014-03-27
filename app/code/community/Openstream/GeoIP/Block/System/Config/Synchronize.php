@@ -39,9 +39,9 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
      *
      * @return string
      */
-    public function getAjaxSyncUrl()
+    public function getAjaxSyncUrl($index)
     {
-        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/synchronize');
+        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/synchronize', array('index' => $index));
     }
 
     /**
@@ -49,9 +49,9 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
      *
      * @return string
      */
-    public function getAjaxStatusUpdateUrl()
+    public function getAjaxStatusUpdateUrl($index)
     {
-        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/status');
+        return Mage::getSingleton('adminhtml/url')->getUrl('*/geoip/status', array('index' => $index));
     }
 
     /**
