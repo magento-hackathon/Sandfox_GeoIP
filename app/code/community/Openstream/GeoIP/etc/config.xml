@@ -57,7 +57,7 @@
     <crontab>
         <jobs>
             <geoip_update>
-                <schedule><cron_expr>0 0 1 * *</cron_expr></schedule>
+                <schedule><cron_expr>0 0 * * 5</cron_expr></schedule>
                 <run><model>geoip/cron::run</model></run>
             </geoip_update>
         </jobs>
