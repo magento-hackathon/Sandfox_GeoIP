@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Model_Info extends Openstream_GeoIP_Model_Abstract
+class Sandfox_GeoIP_Model_Info extends Sandfox_GeoIP_Model_Abstract
 {
     public function getDatFileDownloadDate()
     {

@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Model_Observer
+class Sandfox_GeoIP_Model_Observer
 {
     public function controllerFrontInitBefore($observer)
     {

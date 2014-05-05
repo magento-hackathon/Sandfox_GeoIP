@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Helper_Data extends Mage_Core_Helper_Abstract
+class Sandfox_GeoIP_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
      * Get size of remote file

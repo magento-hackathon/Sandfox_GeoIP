@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Model_Country extends Openstream_GeoIP_Model_Abstract
+class Sandfox_GeoIP_Model_Country extends Sandfox_GeoIP_Model_Abstract
 {
     private $country;
     private $allowed_countries = array();
@@ -16,7 +16,7 @@ class Openstream_GeoIP_Model_Country extends Openstream_GeoIP_Model_Abstract
 
     public function getCountryByIp($ip)
     {
-        /** @var $wrapper Openstream_GeoIP_Model_Wrapper */
+        /** @var $wrapper Sandfox_GeoIP_Model_Wrapper */
         $wrapper = Mage::getSingleton('geoip/wrapper');
         if ($wrapper->geoip_open($this->local_file, 0)) {
             $country = $wrapper->geoip_country_code_by_addr($ip);

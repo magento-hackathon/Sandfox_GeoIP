@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<layout>
-    <default>
-        <reference name="notifications">
-            <block type="geoip/adminhtml_notifications" name="geoip_notifications" template="openstream/geoip/notifications.phtml"/>
-        </reference>
-    </default>
-</layout>

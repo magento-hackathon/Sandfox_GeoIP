@@ -1,12 +1,12 @@
 <?php
 
-class Openstream_GeoIP_Adminhtml_GeoipController extends Mage_Adminhtml_Controller_Action
+class Sandfox_GeoIP_Adminhtml_GeoipController extends Mage_Adminhtml_Controller_Action
 {
     public function statusAction()
     {
         /** @var $_session Mage_Core_Model_Session */
         $_session = Mage::getSingleton('core/session');
-        /** @var $info Openstream_GeoIP_Model_Info */
+        /** @var $info Sandfox_GeoIP_Model_Info */
         $info = Mage::getModel('geoip/info');
 
         $_realSize = filesize($info->getArchivePath());
@@ -16,7 +16,7 @@ class Openstream_GeoIP_Adminhtml_GeoipController extends Mage_Adminhtml_Controll
 
     public function synchronizeAction()
     {
-        /** @var $info Openstream_GeoIP_Model_Info */
+        /** @var $info Sandfox_GeoIP_Model_Info */
         $info = Mage::getModel('geoip/info');
         $info->update();
     }

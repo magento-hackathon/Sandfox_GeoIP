@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Model_Abstract
+class Sandfox_GeoIP_Model_Abstract
 {
     protected $local_dir, $local_file, $local_archive, $remote_archive;
 
@@ -19,7 +19,7 @@ class Openstream_GeoIP_Model_Abstract
 
     public function checkFilePermissions()
     {
-        /** @var $helper Openstream_GeoIP_Helper_Data */
+        /** @var $helper Sandfox_GeoIP_Helper_Data */
         $helper = Mage::helper('geoip');
 
         $dir = Mage::getBaseDir('var') . '/' . $this->local_dir;
@@ -41,7 +41,7 @@ class Openstream_GeoIP_Model_Abstract
     }
 
     public function update(){
-        /** @var $helper Openstream_GeoIP_Helper_Data */
+        /** @var $helper Sandfox_GeoIP_Helper_Data */
         $helper = Mage::helper('geoip');
 
         $ret = array('status' => 'error');

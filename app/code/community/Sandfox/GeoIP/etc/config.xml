@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Openstream_GeoIP>
+        <Sandfox_GeoIP>
             <version>0.1.2</version>
-        </Openstream_GeoIP>
+        </Sandfox_GeoIP>
     </modules>
     <global>
         <blocks>
             <geoip>
-                <class>Openstream_GeoIP_Block</class>
+                <class>Sandfox_GeoIP_Block</class>
             </geoip>
         </blocks>
         <models>
             <geoip>
-                <class>Openstream_GeoIP_Model</class>
+                <class>Sandfox_GeoIP_Model</class>
             </geoip>
         </models>
         <helpers>
             <geoip>
-                <class>Openstream_GeoIP_Helper</class>
+                <class>Sandfox_GeoIP_Helper</class>
             </geoip>
         </helpers>
         <events>
@@ -38,7 +38,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <openstream_geoip before="Mage_Adminhtml">Openstream_GeoIP_Adminhtml</openstream_geoip>
+                        <sandfox_geoip before="Mage_Adminhtml">Sandfox_GeoIP_Adminhtml</sandfox_geoip>
                     </modules>
                 </args>
             </adminhtml>
@@ -48,7 +48,7 @@
         <layout>
             <updates>
                 <geoip>
-                    <file>openstream/geoip.xml</file>
+                    <file>sandfox/geoip.xml</file>
                 </geoip>
             </updates>
         </layout>

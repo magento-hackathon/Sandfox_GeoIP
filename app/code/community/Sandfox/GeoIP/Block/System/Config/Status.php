@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Block_System_Config_Status extends Mage_Adminhtml_Block_System_Config_Form_Field
+class Sandfox_GeoIP_Block_System_Config_Status extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     /**
      * Remove scope label
@@ -16,7 +16,7 @@ class Openstream_GeoIP_Block_System_Config_Status extends Mage_Adminhtml_Block_S
 
     protected function _getElementHtml(Varien_Data_Form_Element_Abstract $element)
     {
-        /** @var $info Openstream_GeoIP_Model_Info */
+        /** @var $info Sandfox_GeoIP_Model_Info */
         $info = Mage::getModel('geoip/info');
         if ($date = $info->getDatFileDownloadDate()) {
             $format = Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM);

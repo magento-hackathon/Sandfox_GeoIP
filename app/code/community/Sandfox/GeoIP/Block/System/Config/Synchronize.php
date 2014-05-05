@@ -1,6 +1,6 @@
 <?php
 
-class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Block_System_Config_Form_Field
+class Sandfox_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Block_System_Config_Form_Field
 {
     /*
      * Set template
@@ -8,7 +8,7 @@ class Openstream_GeoIP_Block_System_Config_Synchronize extends Mage_Adminhtml_Bl
     protected function _construct()
     {
         parent::_construct();
-        $this->setTemplate('openstream/geoip/system/config/synchronize.phtml');
+        $this->setTemplate('sandfox/geoip/system/config/synchronize.phtml');
     }
 
     /**

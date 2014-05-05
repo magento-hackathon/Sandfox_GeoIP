@@ -20,7 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-class Openstream_GeoIP_Model_Wrapper
+class Sandfox_GeoIP_Model_Wrapper
 {
     private $flags;
     private $filehandle;
