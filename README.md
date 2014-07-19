@@ -16,7 +16,7 @@ After installation a new field will be added to *System\Configuration\General\Ge
 Usage
 =====
 
-This extension only adds MaxMind GeoIP Lite database to your Magento installation and maintains its updates. It desn't do anything else out of the box (yet). However if comes with a set of methods you can implement in your template or extension.
+This extension only adds MaxMind GeoIP Lite database to your Magento installation and maintains its updates. It doesn't do anything else out of the box (yet). However if comes with a set of methods you can implement in your template or extension.
 
     $geoIP = Mage::getSingleton('geoip/country');
 
