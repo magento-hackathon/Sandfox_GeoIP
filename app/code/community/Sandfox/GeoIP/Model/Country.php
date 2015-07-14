@@ -11,6 +11,7 @@ class Sandfox_GeoIP_Model_Country extends Sandfox_GeoIP_Model_Abstract
 
         $this->country = $this->getCountryByIp(Mage::helper('core/http')->getRemoteAddr());
         $allowCountries = explode(',', (string)Mage::getStoreConfig('general/country/allow'));
+        $this->defaultCountry = (string)Mage::getStoreConfig('general/country/default');
         $this->addAllowedCountry($allowCountries);
     }
 
@@ -40,6 +41,16 @@ class Sandfox_GeoIP_Model_Country extends Sandfox_GeoIP_Model_Abstract
             return in_array($country, $this->allowed_countries);
         } else {
             return true;
+        }
+    }
+
+    public function isDefaultCountry($country = '')
+    {
+        $country = $country ? $country : $this->country;
+        if (!empty($this->defaultCountry) && $country) {
+            return ($this->defaultCountry == $country);
+        } else {
+            return false;
         }
     }
 
