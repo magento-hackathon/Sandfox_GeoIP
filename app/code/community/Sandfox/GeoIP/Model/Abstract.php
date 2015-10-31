@@ -19,7 +19,7 @@ class Sandfox_GeoIP_Model_Abstract
     
     public function getRelativeDirectoryPath()
     {
-        return 'var';
+        return Mage::getStoreConfig('general/country/geoip_directory');
     }
 
     public function getAbsoluteDirectoryPath()

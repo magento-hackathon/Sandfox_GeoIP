@@ -62,4 +62,12 @@
             </geoip_update>
         </jobs>
     </crontab>
+    
+    <default>
+        <general>
+            <country>
+                <geoip_directory>var</geoip_directory>
+            </country>
+        </general>
+    </default>
 </config>
