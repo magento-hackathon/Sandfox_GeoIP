@@ -22,6 +22,15 @@
                             <show_in_store>0</show_in_store>
                             <comment>If you synchronize GeoIP database too often you may be banned for several hours.</comment>
                         </geoip_synchronize>
+                        <geoip_directory>
+                            <label>GeoIP Database Directory</label>
+                            <comment>The base directory in which the GeoIP database will be stored</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7020</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </geoip_directory>
                     </fields>
                 </country>
             </groups>

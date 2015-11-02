@@ -7,8 +7,8 @@ class Sandfox_GeoIP_Model_Abstract
     public function __construct()
     {
         $this->local_dir = 'geoip';
-        $this->local_file = Mage::getBaseDir('var') . '/' . $this->local_dir . '/GeoIP.dat';
-        $this->local_archive = Mage::getBaseDir('var') . '/' . $this->local_dir . '/GeoIP.dat.gz';
+        $this->local_file = $this->getAbsoluteDirectoryPath() . '/' . $this->local_dir . '/GeoIP.dat';
+        $this->local_archive = $this->getAbsoluteDirectoryPath() . '/' . $this->local_dir . '/GeoIP.dat.gz';
         $this->remote_archive = 'http://www.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz';
     }
 
@@ -16,25 +16,37 @@ class Sandfox_GeoIP_Model_Abstract
     {
         return $this->local_archive;
     }
+    
+    public function getRelativeDirectoryPath()
+    {
+        return Mage::getStoreConfig('general/country/geoip_directory');
+    }
 
+    public function getAbsoluteDirectoryPath()
+    {
+        return Mage::getBaseDir($this->getRelativeDirectoryPath());
+    }
+    
     public function checkFilePermissions()
     {
         /** @var $helper Sandfox_GeoIP_Helper_Data */
         $helper = Mage::helper('geoip');
 
-        $dir = Mage::getBaseDir('var') . '/' . $this->local_dir;
+        $relativeDirPath = $this->getRelativeDirectoryPath();
+
+        $dir = $this->getAbsoluteDirectoryPath() . '/' . $this->local_dir;
         if (file_exists($dir)) {
             if (!is_dir($dir)) {
-                return sprintf($helper->__('%s exists but it is file, not dir.'), 'var/' . $this->local_dir);
+                return sprintf($helper->__('%s exists but it is file, not dir.'), "$relativeDirPath/{$this->local_dir}");
             } elseif ((!file_exists($this->local_file) || !file_exists($this->local_archive)) && !is_writable($dir)) {
-                return sprintf($helper->__('%s exists but files are not and directory is not writable.'), 'var/' . $this->local_dir);
+                return sprintf($helper->__('%s exists but files are not and directory is not writable.'), "$relativeDirPath/{$this->local_dir}");
             } elseif (file_exists($this->local_file) && !is_writable($this->local_file)) {
-                return sprintf($helper->__('%s is not writable.'), 'var/' . $this->local_dir . '/GeoIP.dat');
+                return sprintf($helper->__('%s is not writable.'), "$relativeDirPath/{$this->local_dir}" . '/GeoIP.dat');
             } elseif (file_exists($this->local_archive) && !is_writable($this->local_archive)) {
-                return sprintf($helper->__('%s is not writable.'), 'var/' . $this->local_dir . '/GeoIP.dat.gz');
+                return sprintf($helper->__('%s is not writable.'), "$relativeDirPath/{$this->local_dir}" . '/GeoIP.dat.gz');
             }
         } elseif (!@mkdir($dir)) {
-            return  sprintf($helper->__('Can\'t create %s directory.'), 'var/' . $this->local_dir);
+            return  sprintf($helper->__('Can\'t create %s directory.'), "$relativeDirPath/{$this->local_dir}");
         }
 
         return '';
